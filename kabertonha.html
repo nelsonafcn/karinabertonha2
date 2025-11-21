@@ -1,823 +1,985 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Karina Bertonha - Esteticista e Cosmetóloga</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karina Bertonha - Esteticista e Cosmetóloga</title>
 
-<!-- Fontes -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Fontes -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
 
-<!-- Ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    html { 
-        scroll-behavior: smooth;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #fff;
-        color: #222;
-        overflow-x: hidden;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            color: #222;
+            overflow-x: hidden;
+        }
 
-    header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 15px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .header-content {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    header h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.3em;
-        color: #b38a58;
-        display: flex;
-        flex-direction: column;
-        line-height: 1.2;
-    }
-
-    .name-part {
-        white-space: nowrap;
-    }
-
-    .profession-part {
-        white-space: nowrap;
-        font-size: 0.9em;
-    }
-
-    nav a {
-        text-decoration: none;
-        color: #b38a58;
-        font-weight: bold;
-        padding: 8px 12px;
-        border: 2px solid #b38a58;
-        border-radius: 20px;
-        transition: all 0.3s;
-        font-size: 0.9em;
-    }
-
-    nav a:hover {
-        background-color: #b38a58;
-        color: #fff;
-    }
-
-    /* Ajustes para telas menores */
-    @media (max-width: 768px) {
         header {
-            padding: 12px 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
+
+        .header-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            color: #b38a58;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .name-part {
+            white-space: nowrap;
+        }
+
+        .profession-part {
+            white-space: nowrap;
+            font-size: 0.9em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #b38a58;
+            font-weight: bold;
+            padding: 8px 12px;
+            border: 2px solid #b38a58;
+            border-radius: 20px;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        nav a:hover {
+            background-color: #b38a58;
+            color: #fff;
+        }
+
+        /* Ajustes para telas menores */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 15px;
+            }
+
+            header h1 {
+                font-size: 1.1em;
+            }
+
+            .profession-part {
+                font-size: 0.8em;
+            }
+
+            nav a {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        /* Ajustes para telas muito pequenas */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1em;
+            }
+
+            .profession-part {
+                font-size: 0.75em;
+            }
+
+            nav a {
+                padding: 5px 8px;
+            }
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            cursor: default;
+            /* Garante que o cursor padrão seja usado fora do box */
+        }
+
+        section.active {
+            opacity: 1;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        section div:not(.section-bg) {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 700px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        section p {
             font-size: 1.1em;
+            line-height: 1.6em;
         }
-        
-        .profession-part {
-            font-size: 0.8em;
+
+        /* Estilos para imagens responsivas */
+        .section-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
         }
-        
-        nav a {
-            padding: 6px 10px;
-            font-size: 0.8em;
-        }
-        
-        section h2 { 
-            font-size: 1.8em; 
-        }
-    }
 
-    /* Ajustes para telas muito pequenas */
-    @media (max-width: 480px) {
-        header h1 {
-            font-size: 1em;
-        }
-        
-        .profession-part {
-            font-size: 0.75em;
-        }
-        
-        nav a {
-            padding: 5px 8px;
-        }
-    }
-
-    section {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: relative;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    section.active {
-        opacity: 1;
-    }
-
-    section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.4);
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    section div:not(.section-bg) {
-        position: relative;
-        z-index: 2;
-        color: #fff;
-        max-width: 700px;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-    }
-
-    section h2 {
-        font-family: 'Playfair Display', serif;
-        font-size: 2.5em;
-        margin-bottom: 15px;
-    }
-
-    section p {
-        font-size: 1.1em;
-        line-height: 1.6em;
-    }
-
-    /* Estilos para imagens responsivas */
-    .section-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .bg-desktop {
-        display: block;
-    }
-
-    .bg-mobile {
-        display: none;
-    }
-
-    @media (max-width: 768px) {
         .bg-desktop {
-            display: none;
+            display: block;
         }
 
         .bg-mobile {
-            display: block;
+            display: none;
         }
-    }
 
-    /* Estilos para os overlays (mapa e contato) */
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        display: none;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
+        @media (max-width: 768px) {
+            .bg-desktop {
+                display: none;
+            }
 
-    .overlay.active {
-        display: flex;
-        opacity: 1;
-    }
+            .bg-mobile {
+                display: block;
+            }
+        }
 
-    .overlay-container {
-        position: relative;
-        width: 90%;
-        max-width: 500px;
-        background-color: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        transform: scale(0.8);
-        transition: transform 0.3s ease-in-out;
-    }
+        /* Estilos para os overlays (mapa e contato) */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
 
-    #mapOverlay .overlay-container {
-        max-width: 800px;
-    }
+        .overlay.active {
+            display: flex;
+            opacity: 1;
+        }
 
-    .overlay-header {
-        background-color: #b38a58;
-        color: white;
-        padding: 15px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .overlay-header h3 {
-        margin: 0;
-        font-family: 'Playfair Display', serif;
-    }
-
-    .close-btn {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 0;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: background-color 0.3s;
-    }
-
-    .close-btn:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .overlay-content {
-        padding: 30px;
-    }
-
-    /* Estilos específicos para o overlay de contato */
-    .contact-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .contact-list li {
-        margin-bottom: 25px;
-        display: flex;
-        align-items: center;
-    }
-
-    .contact-icon {
-        width: 60px;
-        height: 60px;
-        background-color: #f8f4f0;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 20px;
-        color: #b38a58;
-        font-size: 24px;
-        transition: all 0.3s;
-        flex-shrink: 0;
-    }
-
-    .contact-list a {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: #333;
-        transition: color 0.3s;
-        width: 100%;
-    }
-
-    .contact-list a:hover .contact-icon {
-        background-color: #b38a58;
-        color: white;
-    }
-
-    .contact-list a:hover {
-        color: #b38a58;
-    }
-
-    .contact-info {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .contact-label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        font-size: 1.1em;
-    }
-
-    .contact-detail {
-        color: #666;
-    }
-
-    /* Estilos específicos para o overlay do mapa */
-    .map-content {
-        height: 500px;
-        position: relative;
-    }
-
-    .map-address {
-        padding: 20px;
-        background-color: #f8f4f0;
-        border-top: 1px solid #ddd;
-    }
-
-    .map-address p {
-        margin-bottom: 10px;
-        color: #333;
-    }
-
-    .route-btn {
-        display: inline-block;
-        background-color: #b38a58;
-        color: white;
-        padding: 10px 15px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s;
-    }
-
-    .route-btn:hover {
-        background-color: #996c3a;
-    }
-
-    .google-map {
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-
-    @media (max-width: 768px) {
         .overlay-container {
-            width: 95%;
-            max-width: 95%;
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease-in-out;
         }
-        
-        #mapOverlay .overlay-container {
-            height: 80vh;
-        }
-        
-        .map-content {
-            height: calc(100% - 120px);
-        }
-        
-        .contact-list li {
-            flex-direction: row;
-            text-align: left;
-            align-items: flex-start;
-        }
-        
-        .contact-icon {
-            margin-right: 15px;
-            margin-bottom: 0;
-            width: 50px;
-            height: 50px;
-            font-size: 20px;
-        }
-    }
 
-    @media (max-width: 480px) {
+        #mapOverlay .overlay-container {
+            max-width: 800px;
+        }
+
+        .overlay-header {
+            background-color: #b38a58;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .overlay-header h3 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .close-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .overlay-content {
+            padding: 30px;
+        }
+
+        /* Estilos específicos para o overlay de contato */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
         .contact-list li {
-            flex-direction: column;
-            align-items: flex-start;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
         }
-        
+
         .contact-icon {
-            margin-right: 0;
-            margin-bottom: 10px;
+            width: 60px;
+            height: 60px;
+            background-color: #f8f4f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: #b38a58;
+            font-size: 24px;
+            transition: all 0.3s;
+            flex-shrink: 0;
         }
-        
-        .contact-info {
+
+        .contact-list a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
             width: 100%;
         }
-    }
 
-    /* Estilos para o Footer */
-    footer {
-        background-color: #2a2a2a;
-        color: #fff;
-        padding: 50px 20px 30px;
-        font-family: 'Poppins', sans-serif;
-        position: relative;
-        z-index: 1;
-    }
+        .contact-list a:hover .contact-icon {
+            background-color: #b38a58;
+            color: white;
+        }
 
-    .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-    }
+        .contact-list a:hover {
+            color: #b38a58;
+        }
 
-    .footer-logo {
-        margin-bottom: 20px;
-    }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .footer-logo h3 {
-        font-family: 'Playfair Display', serif;
-        color: #b38a58;
-        font-size: 1.5em;
-        margin-bottom: 5px;
-    }
+        .contact-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
 
-    .footer-logo p {
-        font-size: 0.9em;
-        color: #ccc;
-    }
+        .contact-detail {
+            color: #666;
+        }
 
-    .footer-about p {
-        color: #ccc;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        font-size: 0.95em;
-    }
+        /* Estilos específicos para o overlay do mapa */
+        .map-content {
+            height: 500px;
+            position: relative;
+        }
 
-    .footer-links h4, 
-    .footer-contact h4 {
-        color: #b38a58;
-        font-size: 1.2em;
-        margin-bottom: 20px;
-        font-family: 'Playfair Display', serif;
-        position: relative;
-        padding-bottom: 10px;
-    }
+        .map-address {
+            padding: 20px;
+            background-color: #f8f4f0;
+            border-top: 1px solid #ddd;
+        }
 
-    .footer-links h4::after,
-    .footer-contact h4::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-        height: 2px;
-        background-color: #b38a58;
-    }
+        .map-address p {
+            margin-bottom: 10px;
+            color: #333;
+        }
 
-    .footer-links ul {
-        list-style: none;
-    }
+        .route-btn {
+            display: inline-block;
+            background-color: #b38a58;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
 
-    .footer-links li {
-        margin-bottom: 10px;
-    }
+        .route-btn:hover {
+            background-color: #996c3a;
+        }
 
-    .footer-links a {
-        color: #ccc;
-        text-decoration: none;
-        transition: color 0.3s;
-        font-size: 0.95em;
-    }
+        .google-map {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
 
-    .footer-links a:hover {
-        color: #b38a58;
-    }
+        @media (max-width: 768px) {
+            .overlay-container {
+                width: 95%;
+                max-width: 95%;
+            }
 
-    .footer-contact p {
-        color: #ccc;
-        margin-bottom: 15px;
-        display: flex;
-        align-items: flex-start;
-        font-size: 0.95em;
-    }
+            #mapOverlay .overlay-container {
+                height: 80vh;
+            }
 
-    .footer-contact i {
-        color: #b38a58;
-        margin-right: 10px;
-        margin-top: 3px;
-    }
+            .map-content {
+                height: calc(100% - 120px);
+            }
 
-    .footer-social {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
-    }
+            .contact-list li {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+            }
 
-    .footer-social a {
-        color: #fff;
-        background-color: #3a3a3a;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s;
-    }
+            .contact-icon {
+                margin-right: 15px;
+                margin-bottom: 0;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
 
-    .footer-social a:hover {
-        background-color: #b38a58;
-        transform: translateY(-3px);
-    }
+        @media (max-width: 480px) {
+            .contact-list li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-    .footer-bottom {
-        text-align: center;
-        padding-top: 30px;
-        margin-top: 30px;
-        border-top: 1px solid #3a3a3a;
-        color: #999;
-        font-size: 0.85em;
-    }
-	html, body {
-        scroll-snap-type: y mandatory;
-    }
-    section {
-        scroll-snap-align: start;
-    }
-	footer {
-		scroll-snap-align: end;
-	}
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
 
-    @media (max-width: 768px) {
+            .contact-info {
+                width: 100%;
+            }
+        }
+
+        /* Estilos para o Modal de Serviços */
+        .service-modal-content {
+            width: 100%;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-info h4 {
+            color: #b38a58;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .service-info p {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* .service-price removido */
+
+        /* Cursor pointer para indicar clique nas seções */
+        section div:not(.section-bg) {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section div:not(.section-bg):hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        section div:not(.section-bg)::after {
+            content: 'Ver serviços';
+            display: block;
+            margin-top: 15px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b38a58;
+            font-weight: bold;
+        }
+
+        /* Estilos para o Footer */
+        footer {
+            background-color: #2a2a2a;
+            color: #fff;
+            padding: 50px 20px 30px;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            z-index: 10;
+            /* Aumentado para evitar sobreposição */
+        }
+
         .footer-container {
-            grid-template-columns: 1fr;
-			margin-top: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
 
-        
-        .footer-links, 
-        .footer-contact {
-            margin-top: 30px;
+        .footer-logo {
+            margin-bottom: 20px;
         }
-    }
-</style>
+
+        .footer-logo h3 {
+            font-family: 'Playfair Display', serif;
+            color: #b38a58;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .footer-logo p {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .footer-about p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: #b38a58;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #b38a58;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95em;
+        }
+
+        .footer-links a:hover {
+            color: #b38a58;
+        }
+
+        .footer-contact p {
+            color: #ccc;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95em;
+        }
+
+        .footer-contact i {
+            color: #b38a58;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            color: #fff;
+            background-color: #3a3a3a;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background-color: #b38a58;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #3a3a3a;
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        html,
+        body {
+            scroll-snap-type: y mandatory;
+        }
+
+        section {
+            scroll-snap-align: start;
+        }
+
+        footer {
+            scroll-snap-align: end;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                margin-top: 50px;
+            }
+
+
+            .footer-links,
+            .footer-contact {
+                margin-top: 30px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-    <div class="header-content">
-        <h1>
-            <span class="name-part">Karina Bertonha</span>
-            <span class="profession-part">Esteticista e Cosmetóloga</span>
-        </h1>
-        <nav>
-            <a href="#" id="contact-btn">Contato</a>
-            <a href="#" id="map-btn" style="margin-left: 10px;">Localização</a>
-        </nav>
-    </div>
-</header>
+    <header>
+        <div class="header-content">
+            <h1>
+                <span class="name-part">Karina Bertonha</span>
+                <span class="profession-part">Esteticista e Cosmetóloga</span>
+            </h1>
+            <nav>
+                <a href="#" id="contact-btn">Contato</a>
+                <a href="#" id="map-btn" style="margin-left: 10px;">Localização</a>
+            </nav>
+        </div>
+    </header>
 
-<section id="home" class="active">
-    <div class="section-bg bg-desktop" style="background-image: url('ArZgEWb8bTGw1dTTgvoD6Z.png');"></div>
-    <div class="section-bg bg-mobile" style="background-image: url('WhatsApp Image 2025-08-08 at 14.40.23.jpeg');"></div>
-    <div>
-        <h2>Cuidados Faciais</h2>
-        <p>Tratamentos personalizados para realçar sua beleza e manter sua pele saudável.</p>
-    </div>
-</section>
+    <section id="home" class="active">
+        <div class="section-bg bg-desktop" style="background-image: url('ArZgEWb8bTGw1dTTgvoD6Z.png');"></div>
+        <div class="section-bg bg-mobile" style="background-image: url('WhatsApp Image 2025-08-08 at 14.40.23.jpeg');">
+        </div>
+        <div onclick="openServiceModal('facial')">
+            <h2>Cuidados Faciais</h2>
+            <p>Tratamentos personalizados para realçar sua beleza e manter sua pele saudável.</p>
+        </div>
+    </section>
 
-<section id="tratamentos">
-    <div class="section-bg bg-desktop" style="background-image: url('huDyOOTMxed6DBGx232PDZ.png');"></div>
-    <div class="section-bg bg-mobile" style="background-image: url('WhatsApp Image 2025-08-08 at 14.38.32.jpeg');"></div>
-    <div>
-        <h2>Terapias Corporais</h2>
-        <p>Relaxamento e bem-estar com técnicas modernas e seguras para seu corpo.</p>
-    </div>
-</section>
+    <section id="tratamentos">
+        <div class="section-bg bg-desktop" style="background-image: url('huDyOOTMxed6DBGx232PDZ.png');"></div>
+        <div class="section-bg bg-mobile" style="background-image: url('WhatsApp Image 2025-08-08 at 14.38.32.jpeg');">
+        </div>
+        <div onclick="openServiceModal('corporal')">
+            <h2>Terapias Corporais</h2>
+            <p>Relaxamento e bem-estar com técnicas modernas e seguras para seu corpo.</p>
+        </div>
+    </section>
 
-<section id="tecnologia">
-    <div class="section-bg bg-desktop" style="background-image: url('Untitled (2200 x 1820 px).png');"></div>
-    <div class="section-bg bg-mobile" style="background-image: url('WhatsApp Image 2025-08-08 at 14.38.28.jpeg');"></div>
-    <div>
-        <h2>Tecnologia Avançada</h2>
-        <p>Equipamentos de ponta para resultados visíveis e duradouros.</p>
-    </div>
-</section>
+    <section id="tecnologia">
+        <div class="section-bg bg-desktop" style="background-image: url('Untitled (2200 x 1820 px).png');"></div>
+        <div class="section-bg bg-mobile" style="background-image: url('WhatsApp Image 2025-08-08 at 14.38.28.jpeg');">
+        </div>
+        <div onclick="openServiceModal('tecnologia')">
+            <h2>Tecnologia Avançada</h2>
+            <p>Equipamentos de ponta para resultados visíveis e duradouros.</p>
+        </div>
+    </section>
 
-<!-- Footer -->
-<footer id="footer">
-	
-    <div class="footer-container">
-        <div class="footer-about">
-            <div class="footer-logo">
-                <h3>Karina Bertonha</h3>
-                <p>Esteticista e Cosmetóloga</p>
+    <!-- Footer -->
+    <footer id="footer">
+
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <h3>Karina Bertonha</h3>
+                    <p>Esteticista e Cosmetóloga</p>
+                </div>
+                <p>Especializada em tratamentos faciais e corporais, oferecendo soluções personalizadas para realçar sua
+                    beleza natural e promover bem-estar.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/kabertonha.esteticista" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5567998203459" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:kabertonha@gmail.com"><i class="far fa-envelope"></i></a>
+                </div>
             </div>
-            <p>Especializada em tratamentos faciais e corporais, oferecendo soluções personalizadas para realçar sua beleza natural e promover bem-estar.</p>
-            <div class="footer-social">
-                <a href="https://instagram.com/kabertonha.esteticista" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/5567998203459" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:kabertonha@gmail.com"><i class="far fa-envelope"></i></a>
+
+            <div class="footer-links">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#" id="contact-btn-footer">Contato</a></li>
+                    <li><a href="#" id="map-btn-footer">Localização</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Serviço</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Informações de Contato</h4>
+                <p><i class="fas fa-map-marker-alt"></i> R. Raul Píres Barbosa, 997 - Chácara Cachoeira, Campo Grande -
+                    MS</p>
+                <p><i class="fas fa-phone-alt"></i> (67) 99820-3459</p>
+                <p><i class="far fa-envelope"></i> kabertonha@gmail.com</p>
+                <p><i class="far fa-clock"></i> Seg-Sex: 9:00 - 18:00<br>Sáb: 9:00 - 13:00</p>
             </div>
         </div>
-        
-        <div class="footer-links">
-            <h4>Links Rápidos</h4>
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#" id="contact-btn-footer">Contato</a></li>
-                <li><a href="#" id="map-btn-footer">Localização</a></li>
-                <li><a href="#">Política de Privacidade</a></li>
-                <li><a href="#">Termos de Serviço</a></li>
-            </ul>
-        </div>
-        
-        <div class="footer-contact">
-            <h4>Informações de Contato</h4>
-            <p><i class="fas fa-map-marker-alt"></i> R. Raul Píres Barbosa, 997 - Chácara Cachoeira, Campo Grande - MS</p>
-            <p><i class="fas fa-phone-alt"></i> (67) 99820-3459</p>
-            <p><i class="far fa-envelope"></i> kabertonha@gmail.com</p>
-            <p><i class="far fa-clock"></i> Seg-Sex: 9:00 - 18:00<br>Sáb: 9:00 - 13:00</p>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy; 2025 Karina Bertonha Estética. Todos os direitos reservados.</p>
-    </div>
-</footer>
 
-<!-- Overlay de Contato -->
-<div class="overlay" id="contactOverlay">
-    <div class="overlay-container">
-        <div class="overlay-header">
-            <h3>Entre em Contato</h3>
-            <button class="close-btn" id="closeContact">&times;</button>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Karina Bertonha Estética. Todos os direitos reservados.</p>
         </div>
-        <div class="overlay-content">
-            <ul class="contact-list">
-                <li>
-                    <a href="https://wa.me/5567998203459" target="_blank">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-info">
-                            <span class="contact-label">WhatsApp</span>
-                            <span class="contact-detail">(67) 99820-3459</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://instagram.com/kabertonha.esteticista" target="_blank">
-                        <div class="contact-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="contact-info">
-                            <span class="contact-label">Instagram</span>
-                            <span class="contact-detail">@kabertonha.esteticista</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:kabertonha@gmail.com">
-                        <div class="contact-icon">
-                            <i class="far fa-envelope"></i>
-                        </div>
-                        <div class="contact-info">
-                            <span class="contact-label">E-mail</span>
-                            <span class="contact-detail">kabertonha@gmail.com</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+    </footer>
+
+    <!-- Overlay de Contato -->
+    <div class="overlay" id="contactOverlay">
+        <div class="overlay-container">
+            <div class="overlay-header">
+                <h3>Entre em Contato Clicando nos Links</h3>
+                <button class="close-btn" id="closeContact">&times;</button>
+            </div>
+            <div class="overlay-content">
+                <ul class="contact-list">
+                    <li>
+                        <a href="https://wa.me/5567998203459" target="_blank">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-info">
+                                <span class="contact-label">WhatsApp</span>
+                                <span class="contact-detail">(67) 99820-3459</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/kabertonha.esteticista" target="_blank">
+                            <div class="contact-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="contact-info">
+                                <span class="contact-label">Instagram</span>
+                                <span class="contact-detail">@kabertonha.esteticista</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:kabertonha@gmail.com">
+                            <div class="contact-icon">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <div class="contact-info">
+                                <span class="contact-label">E-mail</span>
+                                <span class="contact-detail">kabertonha@gmail.com</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Overlay do Mapa -->
-<div class="overlay" id="mapOverlay">
-    <div class="overlay-container">
-        <div class="overlay-header">
-            <h3>Nossa Localização</h3>
-            <button class="close-btn" id="closeMap">&times;</button>
-        </div>
-        <div class="map-content">
-            <iframe 
-                class="google-map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.2342157633446!2d-54.64682392468329!3d-20.46912225879836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e60d29e3a5a9%3A0x9e9c1a7a7b0b0b0b!2sR.%20Raul%20P%C3%ADres%20Barbosa%2C%20997%20-%20Chacara%20Cachoeira%2C%20Campo%20Grande%20-%20MS%2C%2079040-382!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr"                 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+    <!-- Overlay do Mapa -->
+    <div class="overlay" id="mapOverlay">
+        <div class="overlay-container">
+            <div class="overlay-header">
+                <h3>Nossa Localização</h3>
+                <button class="close-btn" id="closeMap">&times;</button>
+            </div>
+            <div class="map-content">
+                <iframe class="google-map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.2342157633446!2d-54.64682392468329!3d-20.46912225879836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e60d29e3a5a9%3A0x9e9c1a7a7b0b0b0b!2sR.%20Raul%20P%C3%ADres%20Barbosa%2C%20997%20-%20Chacara%20Cachoeira%2C%20Campo%20Grande%20-%20MS%2C%2079040-382!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    // Scroll suave para links âncora
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            // Ignora se for um link para # (sem destino)
-            if(this.getAttribute('href') === '#') return;
-            
-            e.preventDefault();
-            
-            const target = document.querySelector(this.getAttribute('href'));
-            if(target) {
-                window.scrollTo({
-                    top: target.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
+    <!-- Overlay de Serviços -->
+    <div class="overlay" id="serviceOverlay">
+        <div class="overlay-container">
+            <div class="overlay-header">
+                <h3 id="serviceModalTitle">Serviços</h3>
+                <button class="close-btn" id="closeService">&times;</button>
+            </div>
+            <div class="overlay-content service-modal-content">
+                <ul class="service-list" id="serviceList">
+                    <!-- Conteúdo dos serviços será injetado aqui pelo JS -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll suave para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Ignora se for um link para # (sem destino)
+                if (this.getAttribute('href') === '#') return;
+
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
-    });
 
-    // Controle das seções ativas
-    const sections = document.querySelectorAll("section");
+        // Controle das seções ativas
+        const sections = document.querySelectorAll("section");
 
-    function checkActiveSection() {
-        let scrollPos = window.scrollY + (window.innerHeight / 3); // Ajustado para 1/3 da tela
-        
-        sections.forEach(sec => {
-            const secTop = sec.offsetTop;
-            const secBottom = secTop + sec.offsetHeight;
-            
-            if(scrollPos >= secTop && scrollPos <= secBottom) {
-                sections.forEach(s => s.classList.remove("active"));
-                sec.classList.add("active");
-            }
-        });
-    }
+        function checkActiveSection() {
+            let scrollPos = window.scrollY + (window.innerHeight / 3); // Ajustado para 1/3 da tela
 
-    // Verificar seção ativa ao carregar e ao rolar
-    window.addEventListener('load', checkActiveSection);
-    window.addEventListener('scroll', checkActiveSection);
+            sections.forEach(sec => {
+                const secTop = sec.offsetTop;
+                const secBottom = secTop + sec.offsetHeight;
 
-    // Controle dos overlays
-    const contactBtn = document.getElementById('contact-btn');
-    const contactBtnFooter = document.getElementById('contact-btn-footer');
-    const mapBtn = document.getElementById('map-btn');
-    const mapBtnFooter = document.getElementById('map-btn-footer');
-    const contactOverlay = document.getElementById('contactOverlay');
-    const mapOverlay = document.getElementById('mapOverlay');
-    const closeContactBtn = document.getElementById('closeContact');
-    const closeMapBtn = document.getElementById('closeMap');
-
-    // Função genérica para abrir overlay
-    function openOverlay(overlay, e) {
-        if(e) e.preventDefault();
-        overlay.style.display = 'flex';
-        setTimeout(() => {
-            overlay.classList.add('active');
-        }, 10);
-        document.body.style.overflow = 'hidden';
-    }
-
-    // Função genérica para fechar overlay
-    function closeOverlay(overlay) {
-        overlay.classList.remove('active');
-        setTimeout(() => {
-            overlay.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }, 300);
-    }
-
-    // Event listeners para abrir overlays
-    contactBtn.addEventListener('click', (e) => openOverlay(contactOverlay, e));
-    contactBtnFooter.addEventListener('click', (e) => openOverlay(contactOverlay, e));
-    mapBtn.addEventListener('click', (e) => openOverlay(mapOverlay, e));
-    mapBtnFooter.addEventListener('click', (e) => openOverlay(mapOverlay, e));
-
-    // Event listeners para fechar overlays
-    closeContactBtn.addEventListener('click', () => closeOverlay(contactOverlay));
-    closeMapBtn.addEventListener('click', () => closeOverlay(mapOverlay));
-
-    // Fechar overlays clicando fora do container
-    contactOverlay.addEventListener('click', (e) => {
-        if(e.target === contactOverlay) {
-            closeOverlay(contactOverlay);
+                if (scrollPos >= secTop && scrollPos <= secBottom) {
+                    sections.forEach(s => s.classList.remove("active"));
+                    sec.classList.add("active");
+                }
+            });
         }
-    });
 
-    mapOverlay.addEventListener('click', (e) => {
-        if(e.target === mapOverlay) {
-            closeOverlay(mapOverlay);
+        // Verificar seção ativa ao carregar e ao rolar
+        window.addEventListener('load', checkActiveSection);
+        window.addEventListener('scroll', checkActiveSection);
+
+        // Controle dos overlays
+        const contactBtn = document.getElementById('contact-btn');
+        const contactBtnFooter = document.getElementById('contact-btn-footer');
+        const mapBtn = document.getElementById('map-btn');
+        const mapBtnFooter = document.getElementById('map-btn-footer');
+        const contactOverlay = document.getElementById('contactOverlay');
+        const mapOverlay = document.getElementById('mapOverlay');
+        const closeContactBtn = document.getElementById('closeContact');
+        const closeMapBtn = document.getElementById('closeMap');
+
+        // Função genérica para abrir overlay
+        function openOverlay(overlay, e) {
+            if (e) e.preventDefault();
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 10);
+            document.body.style.overflow = 'hidden';
         }
-    });
 
-    // Fechar overlays com tecla ESC
-    document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape') {
-            if(contactOverlay.classList.contains('active')) {
+        // Função genérica para fechar overlay
+        function closeOverlay(overlay) {
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                document.body.style.overflow = ''; // Restaura o comportamento padrão do CSS
+            }, 300);
+        }
+
+        // Event listeners para abrir overlays
+        contactBtn.addEventListener('click', (e) => openOverlay(contactOverlay, e));
+        contactBtnFooter.addEventListener('click', (e) => openOverlay(contactOverlay, e));
+        mapBtn.addEventListener('click', (e) => openOverlay(mapOverlay, e));
+        mapBtnFooter.addEventListener('click', (e) => openOverlay(mapOverlay, e));
+
+        // Event listeners para fechar overlays
+        closeContactBtn.addEventListener('click', () => closeOverlay(contactOverlay));
+        closeMapBtn.addEventListener('click', () => closeOverlay(mapOverlay));
+
+        // Fechar overlays clicando fora do container
+        contactOverlay.addEventListener('click', (e) => {
+            if (e.target === contactOverlay) {
                 closeOverlay(contactOverlay);
-            } else if(mapOverlay.classList.contains('active')) {
+            }
+        });
+
+        mapOverlay.addEventListener('click', (e) => {
+            if (e.target === mapOverlay) {
                 closeOverlay(mapOverlay);
             }
+        });
+
+        // Dados dos serviços (Valores removidos)
+        const servicesData = {
+            facial: {
+                title: "Cuidados Faciais",
+                items: [
+                    { name: "Limpeza de Pele Profunda", desc: "Remoção de impurezas, cravos e células mortas." },
+                    { name: "Peeling Químico", desc: "Renovação celular para manchas e rugas finas." },
+                    { name: "Microagulhamento", desc: "Estímulo de colágeno para cicatrizes e rejuvenescimento." },
+                    { name: "Revitalização Facial", desc: "Hidratação profunda e luminosidade." },
+                    { name: "Drenagem Linfática Facial", desc: "Redução de inchaço e melhora da circulação." }
+                ]
+            },
+            corporal: {
+                title: "Terapias Corporais",
+                items: [
+                    { name: "Drenagem Linfática", desc: "Eliminação de toxinas e redução de retenção de líquidos." },
+                    { name: "Massagem Modeladora", desc: "Redução de medidas e contorno corporal." },
+                    { name: "Massagem Relaxante", desc: "Alívio de tensões e estresse." },
+                    { name: "Tratamento para Celulite", desc: "Protocolo exclusivo para melhora do aspecto da pele." },
+                    { name: "Banho de Lua", desc: "Clareamento dos pelos e hidratação corporal." }
+                ]
+            },
+            tecnologia: {
+                title: "Tecnologia Avançada",
+                items: [
+                    { name: "Radiofrequência", desc: "Tratamento para flacidez facial e corporal." },
+                    { name: "Ultrassom", desc: "Quebra de gordura localizada." },
+                    { name: "Laserterapia", desc: "Tratamento para acne, manchas e rejuvenescimento." },
+                    { name: "Alta Frequência", desc: "Ação bactericida e cicatrizante pós-limpeza." }
+                ]
+            }
+        };
+
+        const serviceOverlay = document.getElementById('serviceOverlay');
+        const closeServiceBtn = document.getElementById('closeService');
+        const serviceModalTitle = document.getElementById('serviceModalTitle');
+        const serviceList = document.getElementById('serviceList');
+
+        function openServiceModal(category) {
+            const data = servicesData[category];
+            if (!data) return;
+
+            serviceModalTitle.textContent = data.title;
+            serviceList.innerHTML = data.items.map(item => `
+            <li class="service-item">
+                <div class="service-info">
+                    <h4>${item.name}</h4>
+                    <p>${item.desc}</p>
+                </div>
+            </li>
+        `).join('');
+
+            openOverlay(serviceOverlay);
         }
-    });
-</script>
+
+        closeServiceBtn.addEventListener('click', () => closeOverlay(serviceOverlay));
+
+        serviceOverlay.addEventListener('click', (e) => {
+            if (e.target === serviceOverlay) {
+                closeOverlay(serviceOverlay);
+            }
+        });
+
+        // Fechar overlays com tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (contactOverlay.classList.contains('active')) {
+                    closeOverlay(contactOverlay);
+                } else if (mapOverlay.classList.contains('active')) {
+                    closeOverlay(mapOverlay);
+                } else if (serviceOverlay.classList.contains('active')) {
+                    closeOverlay(serviceOverlay);
+                }
+            }
+        });
+    </script>
 
 </body>
+
 </html>
